@@ -1,0 +1,42 @@
+From 5d612adec47190ebe6ba4277b47c3e6504827ed4 Mon Sep 17 00:00:00 2001
+From: PermisosDev <55111245+PermisosDev@users.noreply.github.com>
+Date: Sun, 16 May 2021 00:19:03 -0300
+Subject: [PATCH] TabComplete Event implemented in server
+
+
+diff --git a/src/main/java/net/minecraft/server/PlayerConnection.java b/src/main/java/net/minecraft/server/PlayerConnection.java
+index 5e903d40..c6261c6f 100644
+--- a/src/main/java/net/minecraft/server/PlayerConnection.java
++++ b/src/main/java/net/minecraft/server/PlayerConnection.java
+@@ -59,13 +59,15 @@ import org.bukkit.event.player.PlayerTeleportEvent;
+ import org.bukkit.event.player.PlayerToggleFlightEvent;
+ import org.bukkit.event.player.PlayerToggleSneakEvent;
+ import org.bukkit.event.player.PlayerToggleSprintEvent;
++// SportPaper start
++import org.bukkit.event.server.TabCompleteEvent;
++// SportPaper endd
+ import org.bukkit.inventory.CraftingInventory;
+ import org.bukkit.inventory.InventoryView;
+ import org.bukkit.util.NumberConversions;
+ import org.github.paperspigot.event.player.IllegalPacketEvent; // Paper
+ import co.aikar.timings.SpigotTimings; // Spigot
+ // CraftBukkit end
+-
+ import org.github.paperspigot.PaperSpigotConfig; // PaperSpigot
+ import org.github.paperspigot.event.player.PlayerJumpEvent;
+ 
+@@ -2121,7 +2123,10 @@ public class PlayerConnection implements PacketListenerPlayIn, IUpdatePlayerList
+ 
+             arraylist.add(s);
+         }
+-
++        // SportPaper Start - Call TabCompleteEvent
++        TabCompleteEvent tce = new TabCompleteEvent(this.getPlayer(), packetplayintabcomplete.a(), arraylist);
++        if(!(tce.isCancelled())) this.server.getPluginManager().callEvent(tce);
++        // SportPaper End    
+         this.player.playerConnection.sendPacket(new PacketPlayOutTabComplete((String[]) arraylist.toArray(new String[arraylist.size()])));
+     }
+ 
+-- 
+2.31.1.windows.1
+
