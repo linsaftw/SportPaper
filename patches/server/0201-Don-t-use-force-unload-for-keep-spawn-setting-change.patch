@@ -1,4 +1,4 @@
-From 4241affadf0b5712c38963756d9eb86c65bbe35d Mon Sep 17 00:00:00 2001
+From 854f2a295f5fc0e595956b9d5fa3581c48840d9a Mon Sep 17 00:00:00 2001
 From: VytskaLT <VytskaLT@protonmail.com>
 Date: Sat, 17 Apr 2021 10:39:04 +0300
 Subject: [PATCH] Don't use force unload for keep spawn setting change
@@ -18,5 +18,5 @@ index b2eaf0c7..a3fec8d3 100644
  
      public boolean unloadChunk(int x, int z, boolean save) {
 -- 
-2.25.1
+2.32.0.windows.1
 
