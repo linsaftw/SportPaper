@@ -15,7 +15,7 @@ index b187a8518..01fcde5fc 100644
 +                    int iterations = 0; // FlamePaper - Limit jsonarray iterations
  
 -                    while (iterator.hasNext()) {
-+                    while (iterator.hasNext() && ++iterations < 24) {
++                    while (iterator.hasNext() && ++iterations < 8) {
                          JsonElement jsonelement1 = (JsonElement) iterator.next();
 +
 +                        // FlamePaper - Don't iterate over arrays
